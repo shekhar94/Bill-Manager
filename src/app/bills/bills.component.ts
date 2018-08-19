@@ -14,10 +14,10 @@ export class BillsComponent implements OnInit {
     this.friendsList = JSON.parse(localStorage.getItem('friendsList'));
     if (!localStorage.getItem('billsList')) {
       localStorage.setItem('billsList', JSON.stringify([]));
-      this.model = new Bill(1, '', 0, []);
+      this.model = new Bill(1, '', 0, [], '');
     } else {
         this.billsList = JSON.parse(localStorage.getItem('billsList'));
-        this.model = new Bill(this.billsList.length + 1, '', 0, []);
+        this.model = new Bill(this.billsList.length + 1, '', 0, [], '');
   }
   }
 
@@ -28,6 +28,6 @@ export class BillsComponent implements OnInit {
     tmpList.push(this.model);
     this.billsList = tmpList;
     localStorage.setItem('billsList', JSON.stringify(tmpList));
-    this.model = new Bill(this.model.id + 1, '', 0, []);
+    this.model = new Bill(this.model.id + 1, '', 0, [], '');
   }
 }

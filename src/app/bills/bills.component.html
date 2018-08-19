@@ -2,7 +2,7 @@
     <h1>Bill Form</h1>
     <form #billForm="ngForm">
         <div class="form-group">
-            <label for="name">Description</label>
+            <label for="description">Description</label>
             <input type="text" class="form-control" id="description" name="description" #description="ngModel" [(ngModel)]="model.description" required>
             <div [hidden]="description.valid || description.pristine" class="alert alert-danger">
                 Description is required
@@ -10,17 +10,23 @@
         </div>
 
         <div class="form-group">
-            <label for="email">Amount</label>
+            <label for="amount">Amount</label>
             <input type="text" class="form-control" id="amount" name="amount" #amount="ngModel" [(ngModel)]="model.amount" required>
             <div [hidden]="amount.valid || amount.pristine" class="alert alert-danger">
                 Amount is required
             </div>
         </div>
         <div class="form-group">
-            <label for="email">Select friends</label>
-            <select [(ngModel)]="model.friends" name="fieldStatus" multiple>
-          <option *ngFor="let friend of friendsList" [ngValue]="friend">{{friend.name}}</option>
-        </select>
+            <label for="selectFriend">Select friends</label>
+            <select [(ngModel)]="model.friends" name="selectFriend" id="selectFriend" multiple>
+                <option *ngFor="let friend of friendsList" [ngValue]="friend">{{friend.name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="paidBy">Paid by</label>
+            <select [(ngModel)]="model.paidBy" name="paidBy" id="paidBy">
+                <option *ngFor="let friend of friendsList" [ngValue]="friend">{{friend.name}}</option>
+            </select>
         </div>
 
         <button type="button" class="btn btn-success" (click)="newBill(); billForm.reset()">Add bill</button>
@@ -33,8 +39,9 @@
             <b>id: </b>{{bill.id}}<br>
             <b>description: </b>{{bill.description}}<br>
             <b>amount: </b>{{bill.amount}}<br>
-            <b>Friends added to this bill: </b><br>
+            <b>paid by: </b>{{bill.paidBy.name}}<br>
             <hr>
+            <b>Friends added to this bill: </b><br>
             <div *ngFor="let friend of bill.friends">
                 {{friend.name}} &nbsp; &nbsp; {{friend.email}}
             </div>

@@ -3,6 +3,7 @@ export class Bill {
         public id: number,
         public description: string,
         public amount: number,
-        public friends: string[]
+        public friends: string[],
+        public paidBy: any
     ) {}
 }

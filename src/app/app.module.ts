@@ -6,10 +6,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { FriendFormComponent } from './friend-form/friend-form.component';
 import { BillsComponent } from './bills/bills.component';
+import { BalanceSummaryComponent } from './balance-summary/balance-summary.component';
 
 const appRoutes: Routes = [
   { path: 'friends', component: FriendFormComponent },
-  { path: 'bills',      component: BillsComponent },
+  { path: 'bills', component: BillsComponent },
+  { path: 'balance-summary', component: BalanceSummaryComponent },
   { path: '',
     redirectTo: '/friends',
     pathMatch: 'full'
@@ -19,7 +21,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     FriendFormComponent,
-    BillsComponent
+    BillsComponent,
+    BalanceSummaryComponent
   ],
   imports: [
     BrowserModule,
